@@ -85,6 +85,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -102,6 +103,13 @@ section {
 }
 body {
   line-height: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #111132;
+  font-family: "weelfleet", sans-serif;
+  margin-bottom: 30px;
 }
 ol,
 ul {
@@ -123,16 +131,12 @@ table {
   border-spacing: 0;
 }
 
-body {
-  background-color: #111132;
-  font-family: "weelfleet", sans-serif;
-}
-
 header {
-  height: 60px;
+  padding: 20px;
   background-color: #ffffaf;
   width: 900px;
-  margin: 0 auto;
+  margin: 20px auto;
+  border-radius: 8px;
 }
 
 h1 {
@@ -141,9 +145,6 @@ h1 {
   color: #111132;
   text-transform: uppercase;
   text-align: center;
-  padding-top: 20px;
-  text-align: center;
-  line-height: 10px;
 }
 
 h3 {
@@ -160,6 +161,95 @@ h3 {
   text-transform: uppercase;
 }
 
+.modal {
+  position: absolute;
+  background-color: #ffff;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: animate;
+  animation-duration: 800ms;
+
+  padding: 10px;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  border-radius: 8px;
+}
+
+.congratsModal {
+  width: 80%;
+  background-color: #ffff;
+  display: none;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.9;
+
+  top: 50%;
+}
+
+.congratsModal button:hover {
+  background: #111132;
+}
+
+.congratsModal h2 {
+  font-size: 43px;
+  text-align: center;
+  position: relative;
+  top: 40%;
+}
+
+.xButton {
+  color: #666666;
+  background: none;
+  border: none;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  margin: 0 250px;
+}
+
+.xButton:hover {
+  border: none;
+  color: #ff0000;
+}
+
+.instructions_modal {
+  width: 300px;
+  height: 200px;
+
+  text-align: start;
+  border-radius: 10px;
+  display: none;
+}
+
+.instructions_modal h3 {
+  text-align: start;
+  margin: 6px 0;
+  font-weight: 700;
+  color: #111132;
+}
+
+.instructions_modal p {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+@keyframes animate {
+  from {
+    opacity: 1;
+  }
+  from {
+    opacity: 0;
+  }
+}
+
 #towersBox {
   width: 900px;
   height: 400px;
@@ -170,6 +260,8 @@ h3 {
   justify-content: center;
   gap: 200px;
   background-color: #ffffaf;
+
+  border-radius: 8px;
 }
 
 .organize-tower {
@@ -198,12 +290,6 @@ h3 {
   background-color: #111132;
 }
 
-#tower1,
-#tower2,
-#tower3 {
-  padding: 0 5px;
-}
-
 .disc {
   border-radius: 5px;
 }
@@ -230,4 +316,110 @@ h3 {
   width: 140px;
   height: 25px;
   background-color: orange;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 24px;
+  width: 200px;
+  padding: 10px;
+
+  border-radius: 8px;
+  background-color: #ffffaf;
+  color: #000;
+
+  transition: 0.4s;
+}
+
+button:hover {
+  background: none;
+  color: #ffffaf;
+  border: 1px solid #ffffaf;
+}
+
+@media (max-width: 549px) {
+  header {
+    width: 200px;
+  }
+  header h1 {
+    font-size: 15px;
+  }
+
+  #towersBox {
+    width: 200px;
+    height: 670px;
+    gap: 0;
+    flex-direction: column;
+  }
+
+  .tower {
+    height: 140px;
+  }
+
+  .m1,
+  .m2,
+  .m3,
+  .m4 {
+    height: 30px;
+  }
+
+  .m1 {
+    width: 40px;
+  }
+
+  .m2 {
+    width: 70px;
+  }
+
+  .m3 {
+    width: 100px;
+  }
+
+  .m4 {
+    width: 130px;
+  }
+}
+
+@media (min-width: 550px) and (max-width: 900px) {
+  header {
+    width: 500px;
+  }
+  header h1 {
+    font-size: 26px;
+  }
+
+  #towersBox {
+    width: 500px;
+    height: 670px;
+    gap: 0;
+    flex-direction: column;
+  }
+
+  .tower {
+    height: 140px;
+  }
+
+  .m1,
+  .m2,
+  .m3,
+  .m4 {
+    height: 30px;
+  }
+
+  .m1 {
+    width: 40px;
+  }
+
+  .m2 {
+    width: 70px;
+  }
+
+  .m3 {
+    width: 100px;
+  }
+
+  .m4 {
+    width: 130px;
+  }
 }

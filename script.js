@@ -27,6 +27,8 @@
 
 const towersBox = document.getElementById("towersBox");
 
+const body = document.querySelector("body");
+
 const tower1 = document.getElementById("tower1");
 const tower2 = document.getElementById("tower2");
 const tower3 = document.getElementById("tower3");
@@ -40,16 +42,29 @@ disc3.className = "disc m3";
 const disc4 = document.createElement("div");
 disc4.className = "disc m4";
 
+const resetButton = document.createElement("button");
+resetButton.innerText = "RESETAR";
+
+resetButton.addEventListener("click", () => window.location.reload());
+
 tower1.appendChild(disc4);
 tower1.appendChild(disc3);
 tower1.appendChild(disc2);
 tower1.appendChild(disc1);
+
+body.appendChild(resetButton);
 
 let arrDisc = [];
 
 tower1.addEventListener("click", selectDisc);
 tower2.addEventListener("click", selectDisc);
 tower3.addEventListener("click", selectDisc);
+
+const congratsModal = document.querySelector(".congratsModal");
+const resetButton2 = resetButton.cloneNode(true);
+resetButton2.innerText = "Jogar de novo";
+resetButton2.addEventListener("click", () => window.location.reload());
+congratsModal.appendChild(resetButton2);
 
 function selectDisc(event) {
   arrDisc.push(event.currentTarget);
@@ -80,6 +95,33 @@ function selectDisc(event) {
     }
   }
   if (tower3.children.length === 4) {
-    alert("parabéns, você conseguiu!");
+    congratsModal.style.display = "flex";
+  }
+}
+
+const modalButton = document.querySelector(".instructions");
+const instructionsModal = document.querySelector(".instructions_modal");
+
+let modalIsOpen = false;
+
+body.addEventListener("click", modalState);
+
+function modalState(el) {
+  if (el.target === modalButton) {
+    modalIsOpen = true;
+  }
+
+  if (el.target.className === "xButton") {
+    modalIsOpen = false;
+  }
+
+  if (el.target !== modalButton) {
+    modalIsOpen = false;
+  }
+
+  if (modalIsOpen === true) {
+    instructionsModal.style.display = "block";
+  } else {
+    instructionsModal.style.display = "none";
   }
 }
